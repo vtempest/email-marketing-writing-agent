@@ -1,10 +1,11 @@
-# GPT Marketer - AI-Powered B2B Email Marketing Platform
+Marketing Email Writer Agent
+
 
 > Transform your B2B outreach with AI-driven personalization and intelligent campaign management
 
 A modern, full-stack web application built with Next.js that leverages AI to create highly personalized email marketing campaigns. GPT Marketer combines cutting-edge technology with an intuitive interface to help businesses connect with their target audiences more effectively.
 
-![GPT Marketer Dashboard](https://img.shields.io/badge/Status-Production_Ready-success)
+Status-Production_Ready-success)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
