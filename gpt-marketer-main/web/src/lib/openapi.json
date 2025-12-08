@@ -1,0 +1,416 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GPT Marketer API",
+    "version": "1.0.0",
+    "description": "AI-powered B2B email marketing API for personalized campaign generation",
+    "contact": {
+      "name": "API Support",
+      "email": "support@gpt-marketer.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "description": "Development server"
+    },
+    {
+      "url": "https://api.gpt-marketer.com",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key for authentication"
+      }
+    },
+    "schemas": {
+      "Campaign": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique campaign identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Campaign name"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "processing", "completed", "failed"],
+            "description": "Campaign status"
+          },
+          "targetCompanies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of target company URLs"
+          },
+          "emailTemplate": {
+            "type": "string",
+            "description": "Email template"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      },
+      "EmailResult": {
+        "type": "object",
+        "properties": {
+          "companyUrl": {
+            "type": "string",
+            "description": "Target company URL"
+          },
+          "subject": {
+            "type": "string",
+            "description": "Email subject line"
+          },
+          "body": {
+            "type": "string",
+            "description": "Personalized email body"
+          },
+          "designUrl": {
+            "type": "string",
+            "description": "URL to designed email image"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "generated", "sent", "failed"],
+            "description": "Email generation status"
+          }
+        }
+      },
+      "CompanyResearch": {
+        "type": "object",
+        "properties": {
+          "companyUrl": {
+            "type": "string",
+            "description": "Company website URL"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Company name"
+          },
+          "industry": {
+            "type": "string",
+            "description": "Company industry"
+          },
+          "recentEvents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Recent company news and events"
+          },
+          "keyContacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Key decision makers"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/campaigns": {
+      "get": {
+        "summary": "List campaigns",
+        "description": "Retrieve all marketing campaigns for the authenticated user",
+        "tags": ["Campaigns"],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "campaigns": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Campaign"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create campaign",
+        "description": "Create a new marketing campaign",
+        "tags": ["Campaigns"],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "targetCompanies"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Campaign name"
+                  },
+                  "targetCompanies": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "List of target company URLs (max 100)"
+                  },
+                  "emailTemplate": {
+                    "type": "string",
+                    "description": "Optional email template"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Campaign created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/campaigns/{campaignId}": {
+      "get": {
+        "summary": "Get campaign",
+        "description": "Retrieve a specific campaign by ID",
+        "tags": ["Campaigns"],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "campaignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Campaign ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campaign"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Campaign not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/campaigns/{campaignId}/emails": {
+      "get": {
+        "summary": "Get campaign emails",
+        "description": "Retrieve all generated emails for a campaign",
+        "tags": ["Emails"],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "campaignId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Campaign ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "emails": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/EmailResult"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/research": {
+      "post": {
+        "summary": "Research company",
+        "description": "Gather intelligence about a target company",
+        "tags": ["Research"],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["companyUrl"],
+                "properties": {
+                  "companyUrl": {
+                    "type": "string",
+                    "description": "Company website URL"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Research completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyResearch"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Campaigns",
+      "description": "Marketing campaign management"
+    },
+    {
+      "name": "Emails",
+      "description": "Email generation and management"
+    },
+    {
+      "name": "Research",
+      "description": "Company research and intelligence"
+    }
+  ]
+}
