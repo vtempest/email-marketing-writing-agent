@@ -13,11 +13,13 @@ import {
   LogOut,
   FileText,
   Users,
+  Split,
 } from "lucide-react";
 
 const navigation = [
   { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
   { name: "Campaigns", href: "/dashboard/campaigns", icon: Mail },
+  { name: "A/B Testing", href: "/dashboard/ab-testing", icon: Split },
   { name: "Contacts", href: "/dashboard/contacts", icon: Users },
   { name: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
   { name: "API Docs", href: "/api-docs", icon: FileText },

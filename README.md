@@ -54,10 +54,10 @@ A full-stack Next.js application that leverages AI to generate highly personaliz
 
 ### Installation
 
-1. **Clone and navigate to the web directory**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/email-marketing-writing-agent.git
-cd email-marketing-writing-agent/web
+cd email-marketing-writing-agent
 ```
 
 2. **Install dependencies**
@@ -175,7 +175,7 @@ Best regards,
 ## Project Structure
 
 ```
-web/
+email-marketing-writing-agent/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── (auth)/            # Authentication pages
