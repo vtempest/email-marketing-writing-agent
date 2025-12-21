@@ -1,62 +1,52 @@
-Marketing Email Writer Agent
+# Email Marketing Writing Agent
 
+> AI-powered email marketing platform that creates personalized B2B outreach campaigns
 
-> Transform your B2B outreach with AI-driven personalization and intelligent campaign management
+A full-stack Next.js application that leverages AI to generate highly personalized email marketing campaigns. Built with modern technologies and designed for businesses looking to enhance their B2B outreach with intelligent automation.
 
-A modern, full-stack web application built with Next.js that leverages AI to create highly personalized email marketing campaigns. GPT Marketer combines cutting-edge technology with an intuitive interface to help businesses connect with their target audiences more effectively.
-
-Status-Production_Ready-success)
+![Status](https://img.shields.io/badge/Status-Production_Ready-success)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## ✨ Features
+## Features
 
-### 🎯 Campaign Management
-- **Visual Campaign Builder** - Intuitive interface for creating campaigns with tabs for setup, targeting, email templates, and preview
-- **Bulk Target Import** - Upload CSV/Excel files with target companies
-- **Real-time Campaign Tracking** - Monitor email status, open rates, and click rates
-- **Campaign Analytics** - Detailed insights into campaign performance
+### Campaign Management
+- **Visual Campaign Builder** - Intuitive interface with tabs for setup, targeting, templates, and preview
+- **Bulk Import** - Upload CSV/Excel files with target companies
+- **Real-time Tracking** - Monitor email status, open rates, and click rates
+- **Campaign Analytics** - Detailed performance insights
 
-### 🤖 AI-Powered Personalization
-- **Smart Research Agent** - Automatically gathers intelligence about target companies
-- **Dynamic Email Generation** - Creates unique, contextual emails for each recipient
-- **Template Variables** - Use `{{firstName}}`, `{{companyName}}`, `{{recentNews}}` and more
-- **AI Template Generator** - One-click template generation based on product info
-- **Tone Customization** - Professional, casual, formal, or enthusiastic tones
+### AI-Powered Personalization
+- **Smart Research Agent** - Automatically gathers company intelligence
+- **Dynamic Email Generation** - Creates unique, contextual emails per recipient
+- **Template Variables** - Use `{{firstName}}`, `{{companyName}}`, `{{recentNews}}`, and more
+- **One-Click AI Templates** - Generate templates based on your product info
+- **Tone Customization** - Professional, casual, formal, or enthusiastic
 
-### 📧 Email Customization
-- **Live Email Preview** - See how emails will appear to recipients
+### Email Customization
+- **Live Preview** - See exactly how emails will appear
 - **Template Editor** - Full-featured editor with syntax highlighting
-- **Variable System** - Dynamic personalization with company and contact data
 - **Subject Line Optimizer** - Best practices and character count guidance
-- **Send Test Emails** - Test before launching campaigns
+- **Test Emails** - Send tests before launching campaigns
 
-### 📊 Dashboard & Analytics
-- **Overview Dashboard** - Campaign metrics, recent activity, and quick actions
-- **Performance Metrics** - Open rates, click rates, and engagement analytics
+### Dashboard & Analytics
+- **Overview Dashboard** - Metrics, recent activity, and quick actions
+- **Performance Tracking** - Open rates, click rates, and engagement
 - **Campaign History** - View all past and active campaigns
-- **Email Status Tracking** - Monitor sent, pending, and failed emails
 
-### 🔐 Authentication & Security
-- **Email/Password Auth** - Secure authentication with Better Auth
-- **OAuth Integration** - Sign in with GitHub or Google
-- **Session Management** - Secure, token-based sessions
+### Authentication & Security
+- **Multiple Auth Methods** - Email/password, GitHub, or Google OAuth
+- **Secure Sessions** - Token-based session management with Better Auth
 - **Protected Routes** - Dashboard accessible only to authenticated users
 
-### 🗄️ Database & API
-- **Type-Safe Database** - Drizzle ORM with PostgreSQL
-- **RESTful API** - Well-documented endpoints
-- **OpenAPI Specification** - Interactive API documentation with Scalar
-- **Database Migrations** - Version-controlled schema changes
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 - **Node.js** 18+ ([Download](https://nodejs.org/))
 - **PostgreSQL** database ([Get started](https://www.postgresql.org/download/))
-- **API Keys** (optional for OAuth):
+- **API Keys** (optional):
   - GitHub OAuth credentials
   - Google OAuth credentials
   - OpenAI API key (for AI features)
@@ -64,10 +54,10 @@ Status-Production_Ready-success)
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone and navigate to the web directory**
 ```bash
-git clone https://github.com/rotemweiss57/gpt-marketer.git
-cd gpt-marketer/web
+git clone https://github.com/yourusername/email-marketing-writing-agent.git
+cd email-marketing-writing-agent/web
 ```
 
 2. **Install dependencies**
@@ -83,13 +73,13 @@ cp .env.example .env.local
 Edit `.env.local`:
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@localhost:5432/gpt_marketer"
+DATABASE_URL="postgresql://user:password@localhost:5432/email_marketing"
 
 # App
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
-# Better Auth
-BETTER_AUTH_SECRET="your_random_secret"  # Generate: openssl rand -base64 32
+# Better Auth - Generate with: openssl rand -base64 32
+BETTER_AUTH_SECRET="your_random_secret"
 
 # OAuth (optional)
 GITHUB_CLIENT_ID="your_github_client_id"
@@ -97,7 +87,7 @@ GITHUB_CLIENT_SECRET="your_github_client_secret"
 GOOGLE_CLIENT_ID="your_google_client_id"
 GOOGLE_CLIENT_SECRET="your_google_client_secret"
 
-# AI Services
+# AI Services (optional)
 OPENAI_API_KEY="your_openai_api_key"
 TAVILY_API_KEY="your_tavily_api_key"
 ```
@@ -116,22 +106,22 @@ npm run dev
 
 Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 📖 Usage Guide
+## Usage
 
-### Creating Your First Campaign
+### Creating a Campaign
 
 1. **Sign up** at `/signup` or sign in at `/signin`
-2. **Navigate to Dashboard** - You'll see the overview
-3. **Click "Create New Campaign"** or go to `/dashboard/campaigns/new`
+2. **Navigate to Dashboard** - View your campaign overview
+3. **Click "Create New Campaign"**
 4. **Fill in Campaign Details**:
    - Campaign name
    - Product/service information
    - Email tone preference
 5. **Add Target Companies**:
-   - Manually enter company URLs
+   - Enter company URLs manually
    - Or upload a CSV/Excel file
 6. **Design Email Template**:
-   - Write custom template
+   - Write a custom template
    - Or click "Generate AI Template"
    - Use variables for personalization
 7. **Preview and Test**:
@@ -139,9 +129,9 @@ Navigate to [http://localhost:3000](http://localhost:3000)
    - Send test emails
 8. **Launch Campaign**
 
-### Email Template Variables
+### Template Variables
 
-Use these variables in your email templates for personalization:
+Use these variables in your email templates:
 
 - `{{firstName}}` - Recipient's first name
 - `{{lastName}}` - Recipient's last name
@@ -151,7 +141,7 @@ Use these variables in your email templates for personalization:
 - `{{industry}}` - Company industry
 - `{{senderName}}` - Your name
 
-Example template:
+**Example template:**
 ```
 Hi {{firstName}},
 
@@ -163,20 +153,12 @@ Best regards,
 {{senderName}}
 ```
 
-### Dashboard Navigation
-
-- **Overview** - Campaign stats and quick actions
-- **Campaigns** - Manage all campaigns
-- **Analytics** - Performance insights (coming soon)
-- **API Docs** - Interactive API documentation
-- **Settings** - Account preferences (coming soon)
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **[Next.js 16](https://nextjs.org/)** - React framework with App Router
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first styling
 - **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible components
 - **[Lucide Icons](https://lucide.dev/)** - Icon library
 
@@ -190,80 +172,28 @@ Best regards,
 - **OpenAI GPT** - Email generation and personalization
 - **Tavily API** - Company research and intelligence
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 web/
 ├── src/
-│   ├── app/                          # Next.js App Router
-│   │   ├── (auth)/                  # Authentication pages
-│   │   │   ├── signin/             # Sign in page
-│   │   │   └── signup/             # Sign up page
-│   │   ├── api/                     # API routes
-│   │   │   └── auth/[...all]/      # Better Auth endpoints
-│   │   ├── api-docs/                # API documentation
-│   │   ├── dashboard/               # Dashboard pages
-│   │   │   ├── campaigns/          # Campaign management
-│   │   │   │   ├── [id]/          # Individual campaign
-│   │   │   │   ├── new/           # Create campaign
-│   │   │   │   └── page.tsx       # Campaigns list
-│   │   │   ├── layout.tsx          # Dashboard layout
-│   │   │   └── page.tsx            # Dashboard home
-│   │   ├── layout.tsx               # Root layout
-│   │   └── page.tsx                 # Landing page
+│   ├── app/                    # Next.js App Router
+│   │   ├── (auth)/            # Authentication pages
+│   │   ├── api/               # API routes
+│   │   ├── dashboard/         # Dashboard pages
+│   │   └── page.tsx           # Landing page
 │   ├── components/
-│   │   ├── dashboard/               # Dashboard components
-│   │   │   └── DashboardLayout.tsx # Sidebar navigation
-│   │   └── ui/                      # shadcn/ui components
-│   ├── db/                          # Database
-│   │   ├── schema.ts               # Database schema
-│   │   └── index.ts                # Database client
-│   └── lib/                         # Utilities
-│       ├── auth.ts                 # Better Auth config
-│       ├── auth-client.ts          # Auth client helpers
-│       ├── openapi.json            # API specification
-│       └── utils.ts                # Helper functions
-├── public/                          # Static assets
-├── drizzle.config.ts                # Drizzle configuration
-├── next.config.ts                   # Next.js config
-├── package.json                     # Dependencies
-├── tailwind.config.ts               # Tailwind config
-└── tsconfig.json                    # TypeScript config
+│   │   ├── dashboard/         # Dashboard components
+│   │   └── ui/                # shadcn/ui components
+│   ├── db/                    # Database schema & client
+│   └── lib/                   # Auth config & utilities
+├── public/                    # Static assets
+├── drizzle.config.ts          # Drizzle configuration
+├── next.config.ts             # Next.js config
+└── package.json               # Dependencies
 ```
 
-## 🗄️ Database Schema
-
-### Tables
-
-#### `user`
-- `id` - Primary key
-- `name` - Full name
-- `email` - Email address (unique)
-- `emailVerified` - Verification status
-- `image` - Profile picture URL
-- `createdAt`, `updatedAt` - Timestamps
-
-#### `session`
-- `id` - Session ID
-- `userId` - Foreign key to user
-- `token` - Session token
-- `expiresAt` - Expiration timestamp
-- `ipAddress`, `userAgent` - Session metadata
-
-#### `account`
-- `id` - Account ID
-- `userId` - Foreign key to user
-- `providerId` - OAuth provider (github, google)
-- `accessToken`, `refreshToken` - OAuth tokens
-- `password` - Hashed password (for email auth)
-
-#### `verification`
-- `id` - Verification ID
-- `identifier` - Email or phone
-- `value` - Verification code
-- `expiresAt` - Expiration timestamp
-
-## 🔧 Development
+## Development
 
 ### Available Scripts
 
@@ -285,14 +215,14 @@ npm run db:studio    # Open Drizzle Studio GUI
 
 When you modify the schema in `src/db/schema.ts`:
 
-1. Generate migration:
+1. **Generate migration:**
 ```bash
 npm run db:generate
 ```
 
-2. Review migration in `drizzle/` directory
+2. **Review migration** in `drizzle/` directory
 
-3. Apply to database:
+3. **Apply to database:**
 ```bash
 npm run db:migrate
 ```
@@ -318,59 +248,31 @@ npm run db:push
 3. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
 4. Add credentials to `.env.local`
 
-## 📚 API Documentation
+## API Documentation
 
 Interactive API documentation is available at `/api-docs` when running the application.
 
 ### Key Endpoints
 
-#### Campaigns
 - `GET /api/campaigns` - List all campaigns
 - `POST /api/campaigns` - Create new campaign
 - `GET /api/campaigns/{id}` - Get campaign details
 - `GET /api/campaigns/{id}/emails` - Get campaign emails
-
-#### Research
 - `POST /api/research` - Research target company
-
-#### Authentication
 - `POST /api/auth/signin` - Sign in
 - `POST /api/auth/signup` - Sign up
 - `POST /api/auth/signout` - Sign out
 
-See full documentation at `http://localhost:3000/api-docs`
-
-## 🚀 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
 1. Push code to GitHub
-
 2. Import project to [Vercel](https://vercel.com)
+3. Configure environment variables (see `.env.local` above)
+4. Deploy
 
-3. Configure environment variables:
-   - `DATABASE_URL` - Production database
-   - `NEXT_PUBLIC_APP_URL` - Production URL
-   - `BETTER_AUTH_SECRET` - Random secret
-   - OAuth credentials
-   - API keys
-
-4. Deploy!
-
-### Environment Variables for Production
-
-Required:
-- `DATABASE_URL` - PostgreSQL connection string
-- `BETTER_AUTH_SECRET` - Random 32-character string
-- `NEXT_PUBLIC_APP_URL` - Your production URL
-
-Optional:
-- `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` - GitHub OAuth
-- `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` - Google OAuth
-- `OPENAI_API_KEY` - AI email generation
-- `TAVILY_API_KEY` - Company research
-
-### Database Setup for Production
+### Database Options
 
 Use a managed PostgreSQL service:
 - [Vercel Postgres](https://vercel.com/storage/postgres)
@@ -378,53 +280,26 @@ Use a managed PostgreSQL service:
 - [Supabase](https://supabase.com/)
 - [Railway](https://railway.app/)
 
-Run migrations:
+Run migrations after database setup:
 ```bash
 npm run db:migrate
 ```
 
-## 🧪 Testing
+## Contributing
 
-(Testing setup coming soon)
-
-```bash
-npm run test         # Run tests
-npm run test:watch   # Watch mode
-npm run test:coverage # Coverage report
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines.
-
-### Development Workflow
+Contributions are welcome! Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) - The React framework
-- [shadcn/ui](https://ui.shadcn.com/) - Beautiful components
-- [Better Auth](https://better-auth.com/) - Modern authentication
-- [Drizzle ORM](https://orm.drizzle.team/) - Type-safe database
-- [OpenAI](https://openai.com/) - AI capabilities
-- [Tavily](https://tavily.com/) - Web research API
-
-## 📞 Support
-
-- **Email**: support@gpt-marketer.com
-- **Issues**: [GitHub Issues](https://github.com/rotemweiss57/gpt-marketer/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/rotemweiss57/gpt-marketer/discussions)
-
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Email template library
 - [ ] A/B testing capabilities
@@ -432,12 +307,9 @@ This project is licensed under the MIT License - see the [LICENSE](../LICENSE) f
 - [ ] Email scheduling
 - [ ] Webhook integrations
 - [ ] Team collaboration features
-- [ ] Custom domain support
 - [ ] Email deliverability monitoring
 - [ ] CRM integrations
 
 ---
 
-**Made with ❤️ by the GPT Marketer team**
-
-[⬆ Back to top](#gpt-marketer---ai-powered-b2b-email-marketing-platform)
+Made with ❤️ for better email marketing
