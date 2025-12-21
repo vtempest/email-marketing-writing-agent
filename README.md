@@ -1,5 +1,9 @@
 # Email Marketing Writing Agent
 
+<p align="center">
+  <img src="https://i.imgur.com/W3SYDh1.png" alt="Email Marketing Writing Agent" width="600">
+</p>
+
 > AI-powered email marketing platform that creates personalized B2B outreach campaigns
 
 A full-stack Next.js application that leverages AI to generate highly personalized email marketing campaigns. Built with modern technologies and designed for businesses looking to enhance their B2B outreach with intelligent automation.
