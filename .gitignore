@@ -1,8 +1,35 @@
-/.idea/inspectionProfiles/profiles_settings.xml
-/.idea/.gitignore
-/.idea/gpt-marketer.iml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/vcs.xml
-/backend/agents/writer.py
-/gpt-marketer/
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Next.js
+.next/
+out/
+
+# Build
+dist/
+build/
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Drizzle
+drizzle/
+
+# Misc
+*.log
+*.tgz
