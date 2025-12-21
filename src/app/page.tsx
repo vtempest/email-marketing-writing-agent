@@ -19,19 +19,30 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        <section className="container mx-auto px-4 py-20 text-center">
-          <h2 className="mb-6 text-5xl font-bold tracking-tight">
-            AI-Powered B2B Email Marketing
-          </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-600">
-            Revolutionize your marketing campaigns with GPT Marketer. Create personalized,
-            data-driven B2B emails that connect with your target audience.
-          </p>
-          <Link href="/signup">
-            <Button size="lg" className="text-lg">
-              Start Your Campaign
-            </Button>
-          </Link>
+        <section className="container mx-auto px-4 py-20">
+          <div className="grid gap-12 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 className="mb-6 text-5xl font-bold tracking-tight">
+                AI-Powered B2B Email Marketing
+              </h2>
+              <p className="mb-8 text-xl text-gray-600">
+                Revolutionize your marketing campaigns with GPT Marketer. Create personalized,
+                data-driven B2B emails that connect with your target audience.
+              </p>
+              <Link href="/signup">
+                <Button size="lg" className="text-lg">
+                  Start Your Campaign
+                </Button>
+              </Link>
+            </div>
+            <div className="flex justify-center">
+              <img
+                src="https://i.imgur.com/W3SYDh1.png"
+                alt="Email Marketing Dashboard"
+                className="max-w-full rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
         </section>
 
         <section className="bg-gray-50 py-20">
