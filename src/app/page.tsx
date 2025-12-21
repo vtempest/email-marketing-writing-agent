@@ -1,13 +1,40 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
+  const handleDemoLogin = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/demo-login", {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to login with demo account");
+      }
+
+      router.push("/dashboard");
+    } catch (err) {
+      console.error("Demo login error:", err);
+      setLoading(false);
+    }
+  };
   return (
     <div className="flex min-h-screen flex-col">
       <header className="border-b">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <h1 className="text-2xl font-bold">GPT Marketer</h1>
           <div className="flex gap-4">
+            <Button variant="outline" onClick={handleDemoLogin} disabled={loading}>
+              {loading ? "Loading..." : "Try Demo"}
+            </Button>
             <Link href="/signin">
               <Button variant="ghost">Sign In</Button>
             </Link>
@@ -29,11 +56,22 @@ export default function Home() {
                 Revolutionize your marketing campaigns with GPT Marketer. Create personalized,
                 data-driven B2B emails that connect with your target audience.
               </p>
-              <Link href="/signup">
-                <Button size="lg" className="text-lg">
-                  Start Your Campaign
+              <div className="flex gap-4">
+                <Link href="/signup">
+                  <Button size="lg" className="text-lg">
+                    Start Your Campaign
+                  </Button>
+                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg"
+                  onClick={handleDemoLogin}
+                  disabled={loading}
+                >
+                  {loading ? "Loading..." : "Try Demo"}
                 </Button>
-              </Link>
+              </div>
             </div>
             <div className="flex justify-center">
               <img

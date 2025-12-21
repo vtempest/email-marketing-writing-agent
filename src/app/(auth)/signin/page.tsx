@@ -57,6 +57,26 @@ export default function SignInPage() {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/demo-login", {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to login with demo account");
+      }
+
+      router.push("/dashboard");
+    } catch (err) {
+      setError("Failed to login with demo account");
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
@@ -122,6 +142,24 @@ export default function SignInPage() {
               Google
             </Button>
           </div>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-gray-500">Or try demo</span>
+            </div>
+          </div>
+
+          <Button
+            variant="secondary"
+            onClick={handleDemoLogin}
+            disabled={loading}
+            className="w-full"
+          >
+            Try Demo (Skip Login)
+          </Button>
         </CardContent>
         <CardFooter>
           <p className="text-sm text-gray-600">
