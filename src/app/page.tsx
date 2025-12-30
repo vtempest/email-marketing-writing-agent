@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { MarketingBadges } from "@/components/ui/marketing-badges";
 
 export default function Home() {
   const router = useRouter();
@@ -103,12 +104,8 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <img
-                  src="https://i.imgur.com/W3SYDh1.png"
-                  alt="Email Marketing Dashboard"
-                  className="max-w-full rounded-lg shadow-lg"
-                />
+              <div className="flex justify-center items-center">
+                <MarketingBadges />
               </div>
             </div>
           </div>
