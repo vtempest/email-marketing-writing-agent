@@ -18,12 +18,15 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to login with demo account");
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.details || errorData.error || "Failed to login with demo account";
+        throw new Error(errorMessage);
       }
 
       router.push("/dashboard");
     } catch (err) {
       console.error("Demo login error:", err);
+      alert(err instanceof Error ? err.message : "Failed to login with demo account");
       setLoading(false);
     }
   };

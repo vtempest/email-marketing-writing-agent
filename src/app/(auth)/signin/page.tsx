@@ -67,12 +67,15 @@ export default function SignInPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to login with demo account");
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.details || errorData.error || "Failed to login with demo account";
+        throw new Error(errorMessage);
       }
 
       router.push("/dashboard");
     } catch (err) {
-      setError("Failed to login with demo account");
+      const errorMessage = err instanceof Error ? err.message : "Failed to login with demo account";
+      setError(errorMessage);
       setLoading(false);
     }
   };

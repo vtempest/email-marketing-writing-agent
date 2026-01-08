@@ -16,6 +16,15 @@ const generateId = (length = 21) => {
 
 export async function POST() {
   try {
+    // Validate database connection
+    if (!process.env.DATABASE_URL) {
+      console.error("DATABASE_URL is not configured");
+      return NextResponse.json(
+        { error: "Database not configured. Please set DATABASE_URL environment variable." },
+        { status: 500 }
+      );
+    }
+
     // Check if demo user exists
     let demoUser = await db.query.user.findFirst({
       where: eq(user.email, DEMO_USER_EMAIL),
@@ -154,8 +163,16 @@ export async function POST() {
     return response;
   } catch (error) {
     console.error("Demo login error:", error);
+    // Provide more detailed error information
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+    const errorDetails = error instanceof Error && error.stack ? error.stack : String(error);
+    console.error("Error details:", errorDetails);
+
     return NextResponse.json(
-      { error: "Failed to create demo session" },
+      {
+        error: "Failed to create demo session",
+        details: process.env.NODE_ENV === "development" ? errorMessage : undefined
+      },
       { status: 500 }
     );
   }
