@@ -10,6 +10,7 @@ import { Impact } from "@/components/marketing/Impact";
 import { Testimonials } from "@/components/marketing/Testimonials";
 import { Pricing } from "@/components/marketing/Pricing";
 import { FAQ } from "@/components/marketing/FAQ";
+import { Surveys } from "@/components/marketing/Surveys";
 import { Enterprise } from "@/components/marketing/Enterprise";
 import { CTA } from "@/components/marketing/CTA";
 import { Footer } from "@/components/marketing/Footer";
@@ -46,6 +47,7 @@ export default function Home() {
         <HowItWorks />
         <Impact />
         <Testimonials />
+        <Surveys />
         <Pricing loading={loading} onDemoLogin={handleDemoLogin} />
         <Enterprise />
         <FAQ />

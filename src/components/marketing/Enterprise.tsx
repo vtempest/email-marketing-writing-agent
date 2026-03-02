@@ -10,18 +10,6 @@ export const Enterprise = () => {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
                     <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
-                        <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
-                            <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                        </div>
-                        <h3 className="text-xl font-bold mb-4">Uncompromising Security</h3>
-                        <p className="text-sm text-gray-500 mb-6">ISO 27001, SOC2 Type II, GDPR, and HIPAA compliant. Enterprise-grade encryption for all your prospect and customer data.</p>
-                        <div className="mt-auto flex flex-wrap justify-center gap-2">
-                            <span className="px-2 py-1 bg-gray-100 rounded text-[10px] font-bold text-gray-600">SOC2 Type II</span>
-                            <span className="px-2 py-1 bg-gray-100 rounded text-[10px] font-bold text-gray-600">GDPR</span>
-                            <span className="px-2 py-1 bg-gray-100 rounded text-[10px] font-bold text-gray-600">ISO 27001</span>
-                        </div>
-                    </div>
-                    <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
                         <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6">
                             <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                         </div>
